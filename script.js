@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "stolen_in": 1911
             },
             {
+                "name": "The Grand Canyon",
                 "year": 1928,
                 "scientist": "Alexander Fleming",
                 "discovery": "Penicillium notatum mold contaminated petri dish",
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "impact": "Saved hundreds of millions of lives"
             },
             {
+                "name": "The Gutenberg Printing Press",
                 "location": "Arizona, USA",
                 "length_miles": 277,
                 "width_miles": "Up to 18",
@@ -57,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "visitor_reception": "Millions"
             },
             {
+                "name": "The Fall of the Berlin Wall",
                 "year": 1440,
                 "inventor": "Johannes Gutenberg",
                 "technology": "Mechanical movable type",
@@ -65,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "significance": "Lowered cost of books, increased literacy"
             },
             {
+                "name": "The RMS",
                 "date": "November 9, 1989",
                 "years_divided": 28,
                 "location": "Berlin",
@@ -88,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "legacy": "Maritime tragedy, memorials, books, films"
             },
             {
+                "name": "Mount Everest ",
                 "location": "Himalayas, Mahalangur Himal",
                 "height_meters": 8848.86,
                 "height_feet": 29031.7,
@@ -107,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "symbol": "Imperial Rome"
             },
             {
+                "name": "The Internet",
                 "roots": "ARPANET",
                 "initial_development": "1960s",
                 "protocols": "TCP/IP",
@@ -125,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "artistry": "Varied facial features, uniforms, hairstyles"
             },
             {
+                "name": "The Antikythera Mechanism",
                 "discovery_year": 1901,
                 "location": "Shipwreck off Greek island of Antikythera",
                 "origin": "Greek",
@@ -133,37 +140,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 "function": "Predict astronomical positions and eclipses",
                 "significance": "Advanced mechanical sophistication for its era"
             }
-        ]
+        ];
 
     const contents = document.getElementById("output");
 
     function displayObjects(objects) {
-        objects.forEach((objects, index) => {
-            const objectDiv = document.createElement("div");
-            objectDiv.style.border = "1px solid #ccc";
-            objectDiv.style.padding = "10px";
-            objectDiv.style.marginBottom = "10px";
+    objects.forEach((object, index) => {
+        const objectDiv = document.createElement('div');
+        objectDiv.style.border = "1px solid blue";
+        objectDiv.style.padding = "10px";
+        objectDiv.style.marginBottom = "10px";
 
-            const heading = document.createElement('h2');
-            heading.textContent = obj.name || obj.heading || `Object ${index + 1}`;
-            objectDiv.appendChild(heading);
+        const heading = document.createElement('h2');
+        heading.style.color = "blue";
+        heading.textContent = object.name || object.heading || `Object ${index + 1}`;
+        objectDiv.appendChild(heading);
 
-            for (const key in obj) {
-                const p = document.createElement('p');
-                const label = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        for (const key in object) {
+            const p = document.createElement('p');
+            const label = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
-                if (Array.isArray(obj[key])) {
-                    p.innerHTML = `<strong>${label}:</strong> ${obj[key].join(', ')}`;
-                } else {
-                    p.innerHTML = `<strong>${label}:</strong> ${obj[key]}`;
-                }
-
-                objDiv.appendChild(p);
+            if (Array.isArray(object[key])) {
+                p.innerHTML = `<strong>${label}:</strong> ${object[key].join(', ')}`;
+            } else {
+                p.innerHTML = `<strong>${label}:</strong> ${object[key]}`;
             }
 
-            outputDiv.appendChild(p);
-        });
-    }
+            objectDiv.appendChild(p);
+        }
+
+        contents.appendChild(objectDiv);
+    });
+}
     displayObjects(objects);
 })
 
