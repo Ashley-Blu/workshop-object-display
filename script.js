@@ -150,9 +150,15 @@ document.addEventListener('DOMContentLoaded', () => {
         objectDiv.style.border = "1px solid blue";
         objectDiv.style.padding = "10px";
         objectDiv.style.marginBottom = "10px";
+        objectDiv.style.textAlign = "left";
+        objectDiv.style.width = "50%";
+        contents.style.display = "flex";
+contents.style.flexWrap = "wrap";
+contents.style.justifyContent = "center";
 
         const heading = document.createElement('h2');
         heading.style.color = "blue";
+        heading.style.textAlign = "center";
         heading.textContent = object.name || object.heading || `Object ${index + 1}`;
         objectDiv.appendChild(heading);
 
